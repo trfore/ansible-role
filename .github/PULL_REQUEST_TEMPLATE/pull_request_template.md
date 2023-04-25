@@ -21,6 +21,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Local
 
 ### Test Configuration
+
 - Molecule image:
 - Molecule CLI command or playbook
 
