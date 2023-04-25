@@ -1,0 +1,37 @@
+name: CI
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: ["*"]
+    types: [opened]
+    paths-ignore:
+      - "LICENSE"
+      - "README.md"
+
+jobs:
+  lint_ansible:
+    uses: trfore/template-ansible/.github/workflows/lint_ansible.yml # remote repo
+
+  lint_python:
+    uses: trfore/template-ansible/.github/workflows/lint_py.yml # remote repo
+
+  molecule_test:
+    needs:
+      - lint_ansible
+      - lint_python
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: [centos8, debian10, ubuntu2004]
+        experimental: [false]
+        molecule_scenario: ["-s default"]
+        include:
+          - distro: ubuntu2004
+            experimental: true
+            molecule_scenario: "-s SCENARIO_NAME"
+    # uses: ./.github/workflows/test_ansible.yml # local, delete if using remote
+    uses: trfore/template-ansible/.github/workflows/test_ansible.yml # remote repo
+    with:
+      distro: ${{ matrix.distro }}
+      experimental: ${{ matrix.experimental }}
+      molecule_scenario: ${{ matrix.molecule_scenario }}
