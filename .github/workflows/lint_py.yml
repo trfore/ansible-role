@@ -1,12 +1,6 @@
 name: Lint Python
 on:
   workflow_call:
-  workflow_dispatch:
-  push:
-    branches: ["*"]
-    paths-ignore:
-      - "LICENSE"
-      - "README.md"
 
 jobs:
   lint:
