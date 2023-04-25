@@ -11,6 +11,6 @@ on:
 jobs:
   deploy:
     if: github.event.pull_request.merged == true
-    uses: trfore/template-ansible/.github/workflows/deploy_ansible_galaxy.yml # remote repo
+    uses: trfore/template-ansible/.github/workflows/deploy_ansible_galaxy.yml@main # remote repo
     secrets:
       API_KEY: ${{ secrets.GALAXY_API_KEY }}

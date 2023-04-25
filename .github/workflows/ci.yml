@@ -10,10 +10,10 @@ on:
 
 jobs:
   lint_ansible:
-    uses: trfore/template-ansible/.github/workflows/lint_ansible.yml # remote repo
+    uses: trfore/template-ansible/.github/workflows/lint_ansible.yml@main # remote repo
 
   lint_python:
-    uses: trfore/template-ansible/.github/workflows/lint_py.yml # remote repo
+    uses: trfore/template-ansible/.github/workflows/lint_py.yml@main # remote repo
 
   molecule_test:
     needs:
@@ -30,7 +30,7 @@ jobs:
             experimental: true
             molecule_scenario: "-s SCENARIO_NAME"
     # uses: ./.github/workflows/test_ansible.yml # local, delete if using remote
-    uses: trfore/template-ansible/.github/workflows/test_ansible.yml # remote repo
+    uses: trfore/template-ansible/.github/workflows/test_ansible.yml@main # remote repo
     with:
       distro: ${{ matrix.distro }}
       experimental: ${{ matrix.experimental }}
