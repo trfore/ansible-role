@@ -1,7 +1,7 @@
 # Ansible Role: {NAME}
 
-[![CI](https://github.com/trfore/template-ansible/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/trfore/template-ansible/actions/workflows/ci.yml)
-[![CD](https://github.com/trfore/template-ansible/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/trfore/template-ansible/actions/workflows/cd.yml)
+[![CI](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml)
+[![CD](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/cd.yml)
 
 A brief description of the role goes here.
 
