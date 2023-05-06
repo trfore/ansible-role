@@ -1,0 +1,4 @@
+---
+repository:
+  description: template for ansible roles
+  topics: ansible-role, template, homelab
