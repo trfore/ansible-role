@@ -21,8 +21,9 @@ jobs:
     env:
       PY_COLORS: "1"
       ANSIBLE_FORCE_COLOR: "1"
-      MOLECULE_IMAGE: trfore/docker-${{ inputs.distro }}-systemd
+      MOLECULE_GLOB: ${{ inputs.molecule_glob }}
       MOLECULE_NAME: ${{ inputs.distro }}
+      MOLECULE_IMAGE: trfore/docker-${{ inputs.distro }}-systemd
     steps:
       - name: Check out codebase
         uses: actions/checkout@v4
