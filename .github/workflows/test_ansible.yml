@@ -9,6 +9,10 @@ on:
         default: false
         required: false
         type: boolean
+      molecule_glob:
+        default: "molecule/*/molecule.yml"
+        required: false
+        type: string
       molecule_scenario:
         default: "" # ex: "-s SCENARIO_NAME"
         required: false
