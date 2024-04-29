@@ -19,6 +19,6 @@
       changed_when: false
 
   tasks:
-    - name: 'Include trfore.template-ansible-role'
-      include_role:
-        name: 'trfore.template-ansible-role'
+    - name: "Include trfore.template-ansible-role"
+      ansible.builtin.include_role:
+        name: "trfore.template-ansible-role"
