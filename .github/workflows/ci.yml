@@ -1,21 +1,33 @@
 name: CI
 on:
-  workflow_dispatch:
   pull_request:
     branches: ["*"]
     paths-ignore:
+      - "**.md"
       - "LICENSE"
-      - "README.md"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow}}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  format:
+    uses: trfore/ansible-role/.github/workflows/format.yml@main # remote repo
+
   lint_ansible:
+    needs:
+      - format
     uses: trfore/ansible-role/.github/workflows/lint_ansible.yml@main # remote repo
 
   lint_python:
+    needs:
+      - format
     uses: trfore/ansible-role/.github/workflows/lint_py.yml@main # remote repo
 
-  molecule_test:
+  test:
     needs:
+      - format
       - lint_ansible
       - lint_python
     strategy:
@@ -34,3 +46,20 @@ jobs:
       distro: ${{ matrix.distro }}
       experimental: ${{ matrix.experimental }}
       molecule_scenario: ${{ matrix.molecule_scenario }}
+
+  check:
+    if: ${{ always() }}
+    needs:
+      - format
+      - lint_ansible
+      - lint_python
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - run: >-
+          python -c "assert set([
+          '${{ needs.format.result }}',
+          '${{ needs.lint_ansible.result }}',
+          '${{ needs.lint_python.result }}',
+          '${{ needs.test.result }}',
+          ]) == {'success'}"
