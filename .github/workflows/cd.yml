@@ -1,5 +1,13 @@
 name: CD
 on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       manual_deploy:
@@ -7,16 +15,10 @@ on:
         default: false
         required: true
         type: boolean
-  pull_request:
-    branches: [main]
-    types: [closed]
-    paths-ignore:
-      - "LICENSE"
-      - "README.md"
 
 jobs:
   deploy:
-    if: ${{ github.event.pull_request.merged == true || inputs.manual_deploy == true }}
+    if: ${{ github.event.pull_request.merged == true || (github.event_name == 'release' && github.event.action == 'published') || inputs.manual_deploy }}
     uses: trfore/ansible-role/.github/workflows/deploy_ansible_galaxy.yml@main # remote repo
     secrets:
       API_KEY: ${{ secrets.GALAXY_API_KEY }}
