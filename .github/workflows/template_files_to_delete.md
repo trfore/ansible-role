@@ -3,6 +3,7 @@
 The following files can be sourced from the template repository and safely deleted:
 
 - deploy_ansible_galaxy.yml
+- format.yml
 - lint_ansible.yml
 - lint_py.yml
 - test_ansible.yml
@@ -10,5 +11,5 @@ The following files can be sourced from the template repository and safely delet
 
 ```sh
 # delete in downstream repositories
-rm deploy_ansible_galaxy.yml lint_ansible.yml lint_py.yml test_ansible.yml template_files_to_delete.md
+rm deploy_ansible_galaxy.yml format.yml lint_ansible.yml lint_py.yml test_ansible.yml template_files_to_delete.md
 ```
