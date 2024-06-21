@@ -46,6 +46,7 @@ jobs:
       distro: ${{ matrix.distro }}
       experimental: ${{ matrix.experimental }}
       molecule_scenario: ${{ matrix.molecule_scenario }}
+      requirements_file: "requirements/dev-requirements.txt"
 
   check:
     if: ${{ always() }}
