@@ -1,7 +1,8 @@
 # Ansible Role: {NAME}
 
-[![CI](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml)
-[![CD](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/cd.yml)
+[![CI](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml/badge.svg)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/ci.yml)
+[![Prerelease](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/prerelease.yml/badge.svg)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/prerelease.yml)
+[![Galaxy Release](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/release.yml/badge.svg)](https://github.com/trfore/ansible-role-{NAME}/actions/workflows/release.yml)
 
 A brief description of the role goes here.
 
