@@ -1,6 +1,11 @@
 name: Deploy to Ansible Galaxy
 on:
   workflow_call:
+    inputs:
+      GALAXY_API_URL:
+        default: "https://galaxy.ansible.com/api/"
+        required: false
+        type: string
     secrets:
       API_KEY: # ex: ${{ secrets.GALAXY_API_KEY }}
         required: true
@@ -22,5 +27,5 @@ jobs:
 
       - name: Import role into galaxy
         run: >-
-          ansible-galaxy role import --api-key ${{ secrets.API_KEY }}
+          ansible-galaxy role import --server ${{ inputs.GALAXY_API_URL }} --api-key ${{ secrets.API_KEY }}
           $(echo ${{ github.repository }} | cut -d/ -f1) $(echo ${{ github.repository }} | cut -d/ -f2)
