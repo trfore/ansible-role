@@ -1,4 +1,4 @@
-name: CD
+name: Galaxy Release
 on:
   pull_request:
     branches: [main]
@@ -7,7 +7,7 @@ on:
       - "**.md"
       - "LICENSE"
   release:
-    types: [published]
+    types: [released]
   workflow_dispatch:
     inputs:
       manual_deploy:
@@ -18,7 +18,7 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.pull_request.merged == true || (github.event_name == 'release' && github.event.action == 'published') || inputs.manual_deploy }}
+    if: ${{ github.event.action == 'released' || inputs.manual_deploy }}
     uses: trfore/ansible-role/.github/workflows/deploy_ansible_galaxy.yml@main # remote repo
     secrets:
       API_KEY: ${{ secrets.GALAXY_API_KEY }}
